@@ -1,1 +1,1 @@
-SELECT * FROM git
+SELECT * FROM git WHERE users = 'ershov_va'
