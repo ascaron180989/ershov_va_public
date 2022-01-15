@@ -1,0 +1,1 @@
+SELECT * FROM git WHERE name_projects = 'project_1'
