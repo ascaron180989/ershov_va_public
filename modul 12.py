@@ -1,29 +1,31 @@
 ########################################################################################################################
-#                                            12.7.3 Вариант 1 (с циклом)                                               #
+#                                            12.7.3 Вариант 1 (на основе материала)                                    #
 ########################################################################################################################
 
 per_cent = {'ТКБ': 5.6, 'СКБ': 5.9, 'ВТБ': 4.28, 'СБЕР': 4.0}
 money = int(input())
 
-list_pc = list(per_cent.values())                               #  список процентных ставок
-deposit = [round(money // 100 * list_pc[i]) for i in range(4)]  #  расчет суммы
+list_pc = list(per_cent.values())
+deposit = list()
+deposit.append(round(money // 100 * list_pc[0]))
+deposit.append(round(money // 100 * list_pc[1]))
+deposit.append(round(money // 100 * list_pc[2]))
+deposit.append(round(money // 100 * list_pc[3]))
+
+i = deposit.index(max(deposit))
 
 print(deposit)
-print('Максимальная сумма, которую вы можете заработать —', max(deposit))
+print(f'Максимальная сумма, которую вы можете заработать — {deposit[i]}')
 
 ########################################################################################################################
-#                                            12.7.3 Вариант 2 (на основе материала)                                    #
+#                                            12.7.3 Вариант 2 (с циклом)                                               #
 ########################################################################################################################
 
 # per_cent = {'ТКБ': 5.6, 'СКБ': 5.9, 'ВТБ': 4.28, 'СБЕР': 4.0}
 # money = int(input())
 #
-# list_pc = list(per_cent.values())
-# deposit = list()
-# deposit.append(round(money // 100 * list_pc[0]))
-# deposit.append(round(money // 100 * list_pc[1]))
-# deposit.append(round(money // 100 * list_pc[2]))
-# deposit.append(round(money // 100 * list_pc[3]))
+# list_pc = list(per_cent.values())                               #  список процентных ставок
+# deposit = [round(money // 100 * list_pc[i]) for i in range(4)]  #  расчет суммы
 #
 # print(deposit)
-# print('Максимальная сумма, которую вы можете заработать —', max(deposit))
+# print(f'Максимальная сумма, которую вы можете заработать — {max(deposit)}')
