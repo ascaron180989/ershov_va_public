@@ -15,8 +15,7 @@ def continue_game():
 
 
 print('Привет Мир, я магический шар, и я знаю ответ на любой твой вопрос...')
-name = input('Как вас зовут? ')
-print(f'Привет {name}')
+
 while True:
     ask_question()
     if continue_game():
