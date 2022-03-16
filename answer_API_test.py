@@ -1,3 +1,14 @@
+'''
+Программа проверяет ответ от API в формате json (ответ считывается из файла answer_API.json находящейся в той же директории):
+1) Содержит все перечисленные в требованиях поля.
+2) Не имеет других полей.
+3) Все поля имеют именно тот тип, который указан в требованиях:
+    int — целое число;
+    string — произвольная строка;
+    string (url) — это строка с url. Проверяем, что url начинается c http:\\ или https:\\;
+    string (itemBuyEvent или itemViewEvent) — строка, в которой могут быть только эти конкретные два значения и никакие другие;
+    bool — булево значение.
+'''
 import json
 
 
@@ -25,7 +36,7 @@ def req_fields(answer: dict) -> list:
     return [] if count == 16 else missing_field
 
 
-# Прверка наличия лишних полей
+# Проверка наличия лишних полей
 def false_fields(answer: dict) -> list:
     extra_field = []
     for i in answer:
@@ -79,7 +90,7 @@ required_fields = {"timestamp": ['int'], "referer": ['str', 'url'], "location": 
 
 if __name__ == '__main__':
 
-    #  Чтение ответа API
+    #  Чтение ответа API из файла
     with open('answer_API.json', encoding='utf8') as answer_json:
         answers = json.load(answer_json)
 
