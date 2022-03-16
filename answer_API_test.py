@@ -1,5 +1,5 @@
 '''
-Программа проверяет ответ от API в формате json (ответ считывается из файла answer_API.json находящейся в той же директории):
+Программа проверяет ответ от API в формате json (ответ считывается из файла answer_API.json, который находится в той же директории):
 1) Содержит все перечисленные в требованиях поля.
 2) Не имеет других полей.
 3) Все поля имеют именно тот тип, который указан в требованиях:
@@ -36,7 +36,7 @@ def req_fields(answer: dict) -> list:
     return [] if count == 16 else missing_field
 
 
-# Проверка наличия лишних полей
+# Прверка наличия лишних полей
 def false_fields(answer: dict) -> list:
     extra_field = []
     for i in answer:
@@ -80,6 +80,8 @@ def type_fields(answer: dict) -> dict:
 
 
 type = decorator_type(type)
+
+# Словарь поле: значение, которые могут принемать соответсвующие поля
 required_fields = {"timestamp": ['int'], "referer": ['str', 'url'], "location": ['str', 'url'], "remoteHost": ['str'],
                    "partyId": ['str'], "sessionId": ['str'], "pageViewId": ['str'],
                    "eventType": ['str', 'itemBuyEvent', 'itemViewEvent'], "item_id": ['str'],
@@ -88,16 +90,14 @@ required_fields = {"timestamp": ['int'], "referer": ['str', 'url'], "location": 
                    "userAgentName": ['str']}
 
 
-if __name__ == '__main__':
+#  Чтение ответа API
+with open('answer_API.json', encoding='utf8') as answer_json:
+    answers = json.load(answer_json)
 
-    #  Чтение ответа API из файла
-    with open('answer_API.json', encoding='utf8') as answer_json:
-        answers = json.load(answer_json)
-
-    # Проверка и вывод
-    for item in range(len(answers)):
-        print(f'Ответ №{item + 1}')
-        print('Отсутствуют поля:', req_fields(answers[item]))
-        print('Лишние поля:', false_fields(answers[item]))
-        print('Ошибки в поле:', type_fields(answers[item]))
-        print()
+# Проверка и вывод
+for item in range(len(answers)):
+    print(f'Ответ №{item + 1}')
+    print('Отсутствуют поля:', req_fields(answers[item]))
+    print('Лишние поля:', false_fields(answers[item]))
+    print('Ошибки в поле:', type_fields(answers[item]))
+    print()
