@@ -56,7 +56,7 @@ with open('answer_API.json', encoding='utf8') as answer_json:
 
 # Проход по словарю json
 for i in range(len(answers)):
-    missing_f = list(required_fields.keys())
+    missing_f = required_fields.copy()
     for key, item in answers[i].items():
         if key in required_fields:
             if required_fields[key] == 'int':
@@ -76,8 +76,7 @@ for i in range(len(answers)):
                     error_fields.append(f'{i}: {key} - Не верное значение')
         else:
             extra_fields.append(f'{i}: {key}')
-        if key in missing_f:
-            missing_f.remove(key)
+        missing_f.pop(key, None)
     if missing_f:
         for n in missing_f:
             missing_fields.append(f'{i}: {n}')
