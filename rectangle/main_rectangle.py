@@ -1,4 +1,4 @@
-from rectangle import Rectangle, Square, Circle
+from class_figures import Rectangle, Square, Circle
 
 
 rect_1 = Rectangle(3, 4)
