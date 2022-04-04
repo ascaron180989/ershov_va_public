@@ -45,8 +45,6 @@ def binary_search(num: list, n: int):
         elif n > num[mid]:
             start = mid + 1
 
-    return 'Баг!!! Не учтенная в алгоритме ситуация'
-
 
 # Основной цикл программа
 flag = 0
